@@ -166,22 +166,5 @@ return packer.startup(function(use)
         require"octo".setup()
       end
     }
-    use {
-        "james1236/backseat.nvim",
-        config = function()
-            require("backseat").setup({
-                -- the key could be set in the environment as OPENAI_API_KEY
-                openai_api_key = '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', -- Get yours from platform.openai.com/account/api-keys
-                openai_model_id = 'gpt-3', --gpt-4
-
-                -- split_threshold = 100,
-                -- additional_instruction = "Respond snarkily", -- (GPT-3 will probably deny this request, but GPT-4 complies)
-                -- highlight = {
-                --     icon = '', -- ''
-                --     group = 'Comment',
-                -- }
-            })
-        end
-    }
     use({'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } })
 end)
