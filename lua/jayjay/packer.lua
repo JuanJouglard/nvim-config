@@ -62,17 +62,26 @@ return packer.startup(function(use)
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
 
-    use { 'nvim-treesitter/nvim-treesitter-context', config = function ()
-        require'treesitter-context'.setup({
-            enable = true,
-        })
-    end }
+    use {
+        'crusj/bookmarks.nvim',
+        branch = 'main',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = function()
+            require("bookmarks").setup()
+            require("telescope").load_extension("bookmarks")
+        end
+    }
+
+    --use { 'nvim-treesitter/nvim-treesitter-context', config = function ()
+    --    require'treesitter-context'.setup({
+    --        enable = true,
+    --    })
+    --end }
 
     -- Color schemes
     use 'navarasu/onedark.nvim'
     use 'tanvirtin/monokai.nvim'
     use 'bluz71/vim-nightfly-guicolors'
-    use { 'rose-pine/neovim', as = 'rose-pine' }
 
     use('mbbill/undotree')
 
@@ -120,20 +129,6 @@ return packer.startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons' },
     }
 
-    use({
-        "jackMort/ChatGPT.nvim",
-        config = function()
-            require("chatgpt").setup({
-                -- optional configuration
-            })
-        end,
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-    })
-
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use { 'samoshkin/vim-mergetool' }
     use { 'tpope/vim-fugitive' }
@@ -147,6 +142,8 @@ return packer.startup(function(use)
             })
         end
     })
+
+    use {'nvim-telescope/telescope.nvim', tag="0.1.0" }
     use {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
@@ -159,7 +156,6 @@ return packer.startup(function(use)
       'pwntester/octo.nvim',
       requires = {
         'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope.nvim',
         'kyazdani42/nvim-web-devicons',
       },
       config = function ()
