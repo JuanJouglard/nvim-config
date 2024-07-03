@@ -1,44 +1,45 @@
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
 
-lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'sumneko_lua',
-  'rust_analyzer',
-  'pylsp',
+lsp.on_attach(function(client, bufnr)
+-- see :help lsp-zero-keybindings
+-- to learn the available actions
+lsp.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+-- Replace the language servers listed here
+-- with the ones you want to install
+ensure_installed = {'tsserver', 'rust_analyzer'},
+handlers = {
+  function(server_name)
+    require('lspconfig')[server_name].setup({})
+  end,
+},
 })
-
--- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
-
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+window = {
+  completion = cmp.config.window.bordered(),
+  documentation = cmp.config.window.bordered(),
+},
+mapping = cmp.mapping.preset.insert({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   ["<C-Space>"] = cmp.mapping.complete(),
+}),
+snippet = {
+  expand = function(args)
+    require('luasnip').lsp_expand(args.body)
+  end,
+},
 })
 
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
