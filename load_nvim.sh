@@ -6,7 +6,7 @@ FILE=/home/juan/.config/nvim/nvim-linux64.tar.gz
 if [ ! -f "$FILE" ]; then
     echo "No nvim installed yet"
 
-    wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.tar.gz
+    wget https://github.com/neovim/neovim/releases/download/v0.10.0/nvim-linux64.tar.gz
 
     tar xzvf nvim-linux64.tar.gz
 fi
