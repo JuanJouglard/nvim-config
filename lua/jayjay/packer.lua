@@ -50,9 +50,6 @@ return packer.startup(function(use)
         end
     }
 
-    -- Icons
-    use 'kyazdani42/nvim-web-devicons'
-
     -- Tag viewer
     use 'preservim/tagbar'
 
@@ -69,6 +66,13 @@ return packer.startup(function(use)
         config = function()
             require("bookmarks").setup()
             require("telescope").load_extension("bookmarks")
+        end
+    }
+
+    use {
+        'kyazdani42/nvim-web-devicons',
+        config = function()
+            require'nvim-web-devicons'.setup { default = true }
         end
     }
 
@@ -151,16 +155,6 @@ return packer.startup(function(use)
             -- you can configure Hop the way you like here; see :h hop-config
             require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
         end
-    }
-    use {
-      'pwntester/octo.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = function ()
-        require"octo".setup()
-      end
     }
     use({'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } })
 end)
