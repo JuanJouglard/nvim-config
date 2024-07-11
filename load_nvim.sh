@@ -1,8 +1,8 @@
 
-export XDG_CONFIG_HOME="/home/juan/.config"
-alias nvim=/home/juan/.config/nvim/nvim-linux64/bin/nvim
+export XDG_CONFIG_HOME="$HOME/.config"
+alias nvim=$HOME/.config/nvim/nvim-linux64/bin/nvim
 
-FILE=/home/juan/.config/nvim/nvim-linux64.tar.gz
+FILE=$HOME/.config/nvim/nvim-linux64.tar.gz
 if [ ! -f "$FILE" ]; then
     echo "No nvim installed yet"
 
