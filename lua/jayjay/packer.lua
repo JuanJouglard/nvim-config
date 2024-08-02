@@ -147,7 +147,7 @@ return packer.startup(function(use)
         end
     })
 
-    use {'nvim-telescope/telescope.nvim', tag="0.1.0" }
+    use {'nvim-telescope/telescope.nvim'}
     use {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended

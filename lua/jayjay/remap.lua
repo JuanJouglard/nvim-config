@@ -64,6 +64,7 @@ map('n', 'sl', ':HopLine<CR>')
 map('n', '<leader>o', "o<ESC>")
 
 map('v', "<leader>f", ":LspZeroFormat<CR>")
+map("n", "<leader>se", ":lua vim.diagnostic.open_float()<CR>")
 
 
 -- Choose which version to keep

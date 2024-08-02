@@ -12,6 +12,7 @@ if not status_ok then
   return
 end
 
+
 local list = {
   { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "tabnew", silent = "true" },
   { key = "<C-e>",                        action = "edit_in_place" },

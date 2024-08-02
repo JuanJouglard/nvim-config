@@ -61,3 +61,4 @@ opt.smartindent = true      -- Autoindent new lines
 opt.foldmethod="expr"
 opt.foldexpr="nvim_treesitter#foldexpr()"
 opt.foldenable = false
+opt.iskeyword:remove("_")

@@ -6,7 +6,7 @@ local Api = {}
 Api.COMPLETIONS_URL = "https://api.openai.com/v1/completions"
 Api.EDITS_URL = "https://api.openai.com/v1/edits"
 -- API KEY
-Api.OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+Api.OPENAI_API_KEY = ""-- os.getenv("OPENAI_API_KEY")
 if not Api.OPENAI_API_KEY then
   error("OPENAI_API_KEY environment variable not set")
 end
