@@ -42,6 +42,12 @@ return packer.startup(function(use)
     -- Indent line
     use 'lukas-reineke/indent-blankline.nvim'
 
+    -- align lines
+    use {
+        'Vonr/align.nvim',
+        branch = "v2",
+    }
+
     -- Autopair
     use {
         'windwp/nvim-autopairs',
@@ -147,7 +153,22 @@ return packer.startup(function(use)
         end
     })
 
-    use {'nvim-telescope/telescope.nvim'}
+    use {'nvim-telescope/telescope.nvim',
+        config = function()
+            require("telescope").setup {
+                extensions = {
+                    recent_files = {
+                        only_cwd = true
+                    }
+                }
+            }
+        end
+    }
+    use {"smartpde/telescope-recent-files",
+        config = function()
+            require("telescope").load_extension("recent_files")
+        end
+    }
     use {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
