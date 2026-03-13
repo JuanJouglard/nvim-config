@@ -5,7 +5,6 @@ require("jayjay.options")
 require("jayjay.colors")
 require("jayjay.autocmds")
 require("jayjay.chatgpt")
-require("jayjay.custom-plugin")
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
