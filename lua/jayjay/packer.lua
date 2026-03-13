@@ -154,12 +154,13 @@ return packer.startup(function(use)
     })
 
     use {'nvim-telescope/telescope.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require("telescope").setup {
                 extensions = {
                     recent_files = {
                         only_cwd = true
-                    }
+                    },
                 }
             }
         end
@@ -178,4 +179,21 @@ return packer.startup(function(use)
         end
     }
     use({'ckipp01/nvim-jenkinsfile-linter', requires = { "nvim-lua/plenary.nvim" } })
+
+    -- Keybinding hints popup
+    use {
+        'folke/which-key.nvim',
+        config = function()
+            require('which-key').setup {}
+        end
+    }
+
+    -- Pretty diagnostics list
+    use {
+        'folke/trouble.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = function()
+            require('trouble').setup {}
+        end
+    }
 end)

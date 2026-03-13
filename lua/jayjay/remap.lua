@@ -86,6 +86,11 @@ map("n", "<Leader>rf",
   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR><ESC>]],
   {noremap = true, silent = true})
 
+-- Trouble
+map('n', '<leader>xx', ':Trouble diagnostics toggle<CR>')
+map('n', '<leader>xd', ':Trouble diagnostics toggle filter.buf=0<CR>')
+map('n', '<leader>xq', ':Trouble quickfix toggle<CR>')
+
 -- Copy current filepath to clipboard
 vim.keymap.set('n', '<leader>cf', function()
   local filepath = vim.fn.expand('%:p')
