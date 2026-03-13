@@ -47,14 +47,15 @@ cmp.setup({
 })
 
 
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = 'E',
+            [vim.diagnostic.severity.WARN] = 'W',
+            [vim.diagnostic.severity.HINT] = 'H',
+            [vim.diagnostic.severity.INFO] = 'I',
+        },
+    },
 })
 
 lsp.on_attach(function(client, bufnr)

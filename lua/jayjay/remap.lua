@@ -11,6 +11,9 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- Set custom keymap for GitHub Copilot suggestion acceptance
+vim.api.nvim_set_keymap("i", "<C-c>", "copilot#Accept('\\<CR>')", { silent = true, expr = true, script = true })
+
 map('n', '<C-j>', '10j')
 map('n', '<C-k>', '10k')
 map('n', '<C-l>', ':+tabnext<CR>')
@@ -65,11 +68,29 @@ map('n', '<leader>o', "o<ESC>")
 
 map('v', "<leader>f", ":LspZeroFormat<CR>")
 map("n", "<leader>se", ":lua vim.diagnostic.open_float()<CR>")
+map("n", "<leader>qf", ":lua vim.lsp.buf.code_action()<CR>")
 
+-- console.log
+map("n", "<leader>cl", "yiwoconsole.log(\"<ESC>pa: \",<ESC>pa)<ESC>")
 
 -- Choose which version to keep
 map('n', "<leader>kl", ":diffget//2<CR>")
 map('n', "<leader>kr", ":diffget//3<CR>")
 
+map('i', "<C-d>", "<BS>", { noremap = true})
+
 -- Git
 vim.api.nvim_create_user_command("Status", "Gtabedit :", {})
+
+map("n", "<Leader>rf",
+  [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR><ESC>]],
+  {noremap = true, silent = true})
+
+-- Copy current filepath to clipboard
+vim.keymap.set('n', '<leader>cf', function()
+  local filepath = vim.fn.expand('%:p')
+  print("filepath: ",filepath)
+  vim.fn.setreg('+', filepath)
+  print('Copied to clipboard: ' .. filepath)
+end, { noremap = true, silent = false })
+

@@ -65,9 +65,6 @@ nvim_tree.setup {
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
-  ignore_buffer_on_setup = false,
-  open_on_setup = true,
-  open_on_setup_file = true, -- open nvim-tree when you open any file
   sort_by = "name",
   root_dirs = {},
   prefer_startup_root = false,
@@ -75,22 +72,17 @@ nvim_tree.setup {
   reload_on_bufenter = false,
   respect_buf_cwd = false,
   on_attach = "disable",
-  remove_keymaps = false,
   select_prompts = false,
   view = {
     adaptive_size = false,
     centralize_selection = false,
     width = 32,
-    hide_root_folder = true,
+
     side = "left",
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = list,
-    },
     float = {
       enable = false,
       quit_on_focus_loss = true,
@@ -109,7 +101,7 @@ nvim_tree.setup {
     group_empty = false,
     highlight_git = true,
     full_name = false,
-    root_folder_label = ":~:s?$?/..?",
+    root_folder_label = false,
     indent_width = 2,
     indent_markers = {
       enable = false,
@@ -170,7 +162,6 @@ nvim_tree.setup {
     update_root = true,
     ignore_list = {},
   },
-  ignore_ft_on_setup = {},
   system_open = {
     cmd = "",
     args = {},

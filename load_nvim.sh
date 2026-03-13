@@ -1,4 +1,5 @@
 
+
 export XDG_CONFIG_HOME="$HOME/.config"
 alias nvim=$XDG_CONFIG_HOME/nvim/nvim-linux64/bin/nvim
 
