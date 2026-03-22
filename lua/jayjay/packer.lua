@@ -196,4 +196,31 @@ return packer.startup(function(use)
             require('trouble').setup {}
         end
     }
+
+    -- Better UI for vim.ui.select and vim.ui.input
+    use {
+        'stevearc/dressing.nvim',
+        config = function()
+            require('dressing').setup({
+                input = {
+                    enabled = true,
+                    default_prompt = "> ",
+                    border = "rounded",
+                },
+                select = {
+                    enabled = true,
+                    backend = { "telescope", "builtin" },
+                },
+            })
+        end
+    }
+
+    -- Render markdown in-buffer
+    use {
+        'MeanderingProgrammer/render-markdown.nvim',
+        requires = { 'nvim-treesitter/nvim-treesitter', 'kyazdani42/nvim-web-devicons' },
+        config = function()
+            require('render-markdown').setup {}
+        end
+    }
 end)
